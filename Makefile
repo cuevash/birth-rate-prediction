@@ -3,8 +3,9 @@
 
 install: 
 	@echo "Installing..."
-	poetry install
-	poetry run pre-commit install
+conda create --name birth-rate-prediction
+## poetry install
+## poetry run pre-commit install
 
 activate:
 	@echo "Activating virtual environment"

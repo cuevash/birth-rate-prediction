@@ -96,3 +96,11 @@ To auto-generate API document for your project, run:
 ```bash
 make docs
 ```
+## Exploring and simple model for predicting FR (Fertility Rate)
+
+The fertility rate varies a lot from country to country, from region to region. Here we intend to make an exploratory exercise to find out what are the main factors that determine a fertility rate.
+
+With little knowledge about the matter lets explore some factors that a priori seems to have an effect on the FR of a country:
+- Average age of population
+- Female education level
+- Economy
