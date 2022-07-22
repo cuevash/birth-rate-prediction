@@ -1,10 +1,16 @@
 stages:
   download_data:
-    cmd: wget https://databank.worldbank.org/data/download/WDI_csv.zip -O data/raw/WDI_csv.zip
+    cmd:  wget https://databank.worldbank.org/data/download/WDI_csv.zip -O data/raw/WDI_csv.zip; \\
+          wget https://databank.worldbank.org/data/download/Gender_Stats_csv.zip -O data/raw/WDI_csv.zip; \\
+          wget https://databank.worldbank.org/data/download/IDS_CSV.zip; \\
     deps:
     - https://databank.worldbank.org/data/download/WDI_csv.zip
+    - https://databank.worldbank.org/data/download/Gender_Stats_csv.zip
+    - https://databank.worldbank.org/data/download/IDS_CSV.zip
     outs:
     - data/raw/WDI_csv.zip
+    - data/raw/Gender_Stats_csv.zip
+    - data/raw/IDS_CSV.zip
 
   process_data:
     cmd: python src/process.py
@@ -16,7 +22,7 @@ stages:
     outs:
     - data/processed:
         persist: true
-        
+
   train_model:
     cmd: python src/train_model.py
     deps:

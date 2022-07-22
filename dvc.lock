@@ -1,0 +1,12 @@
+schema: '2.0'
+stages:
+  download_data:
+    cmd: wget https://databank.worldbank.org/data/download/WDI_csv.zip -O data/raw/WDI_csv.zip
+    deps:
+    - path: https://databank.worldbank.org/data/download/WDI_csv.zip
+      checksum: '"ce695c51309dd81:0"'
+      size: 67671555
+    outs:
+    - path: data/raw/WDI_csv.zip
+      md5: f8c9976b6b6b26659b3a872d225cce4e
+      size: 67671555

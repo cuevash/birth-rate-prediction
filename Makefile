@@ -3,7 +3,7 @@
 
 install: 
 	@echo "Installing..."
-conda create --name birth-rate-prediction
+conda create --name birth-rate-prediction python=3.10
 ## poetry install
 ## poetry run pre-commit install
 
