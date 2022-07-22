@@ -1,16 +1,13 @@
 stages:
   download_data:
-    cmd:  wget https://databank.worldbank.org/data/download/WDI_csv.zip -O data/raw/WDI_csv.zip; \\
-          wget https://databank.worldbank.org/data/download/Gender_Stats_csv.zip -O data/raw/WDI_csv.zip; \\
-          wget https://databank.worldbank.org/data/download/IDS_CSV.zip; \\
-    deps:
-    - https://databank.worldbank.org/data/download/WDI_csv.zip
-    - https://databank.worldbank.org/data/download/Gender_Stats_csv.zip
-    - https://databank.worldbank.org/data/download/IDS_CSV.zip
-    outs:
-    - data/raw/WDI_csv.zip
-    - data/raw/Gender_Stats_csv.zip
-    - data/raw/IDS_CSV.zip
+    foreach: # List of simple values
+      - WDI_csv.zip
+      - Gender_Stats_csv.zip 
+      - IDS_CSV.zip
+    do:
+      cmd: wget "https://databank.worldbank.org/data/download/${item}" -O "data/raw/${item}"
+      outs:
+        - data/raw/${item}
 
   process_data:
     cmd: python src/process.py

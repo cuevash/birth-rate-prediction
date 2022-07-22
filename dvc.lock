@@ -1,12 +1,21 @@
 schema: '2.0'
 stages:
-  download_data:
-    cmd: wget https://databank.worldbank.org/data/download/WDI_csv.zip -O data/raw/WDI_csv.zip
-    deps:
-    - path: https://databank.worldbank.org/data/download/WDI_csv.zip
-      checksum: '"ce695c51309dd81:0"'
-      size: 67671555
+  download_data@IDS_CSV.zip:
+    cmd: wget "https://databank.worldbank.org/data/download/IDS_CSV.zip" -O "data/raw/IDS_CSV.zip"
+    outs:
+    - path: data/raw/IDS_CSV.zip
+      md5: b9e24f73fff26c2b4582fc8434a2ec9c
+      size: 10465046
+  download_data@WDI_csv.zip:
+    cmd: wget "https://databank.worldbank.org/data/download/WDI_csv.zip" -O "data/raw/WDI_csv.zip"
     outs:
     - path: data/raw/WDI_csv.zip
       md5: f8c9976b6b6b26659b3a872d225cce4e
       size: 67671555
+  download_data@Gender_Stats_csv.zip:
+    cmd: wget "https://databank.worldbank.org/data/download/Gender_Stats_csv.zip"
+      -O "data/raw/Gender_Stats_csv.zip"
+    outs:
+    - path: data/raw/Gender_Stats_csv.zip
+      md5: 13b79aadd4dc5ffdd39aa6408a7dbf07
+      size: 24516085
