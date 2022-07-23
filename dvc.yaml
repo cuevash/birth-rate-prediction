@@ -1,14 +1,23 @@
 stages:
   download_data:
     foreach: # List of simple values
-      - WDI_csv.zip
-      - Gender_Stats_csv.zip 
-      - IDS_CSV.zip
+      - file-name: WDI_csv.zip
+        url-dir: https://databank.worldbank.org/data/download
+        dir-out-name: data/raw/wdi
+      - file-name: Gender_Stats_csv.zip
+        url-dir: https://databank.worldbank.org/data/download
+        dir-out-name: data/raw/gender-stats
+      - file-name: IDS_CSV.zip
+        url-dir: https://databank.worldbank.org/data/download
+        dir-out-name: data/raw/ids
     do:
-      cmd: wget "https://databank.worldbank.org/data/download/${item}" -O "data/raw/${item}"
+      cmd: 
+      - curl "${item.url-dir}/${item.file-name}" --create-dirs -o "data/tmp/${item.file-name}"
+      - unzip data/tmp/${item.file-name} -d ${item.dir-out-name}
       outs:
-        - data/raw/${item}
-
+        - ${item.dir-out-name}
+        - data/tmp/${item.file-name}
+        
   process_data:
     cmd: python src/process.py
     deps:

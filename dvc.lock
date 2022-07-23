@@ -30,9 +30,9 @@ stages:
       size: 71
       nfiles: 2
     - path: data/raw
-      md5: 8d26b4bfedb44a4c9a3a03ab8887b4f1.dir
-      size: 102652734
-      nfiles: 4
+      md5: 59dc4a753d747924d66cb715453fbc6b.dir
+      size: 577655221
+      nfiles: 24
     - path: src/process.py
       md5: c6461449c3dfa7a6b467c8e51827e41c
       size: 546
@@ -67,3 +67,42 @@ stages:
       md5: 6ffbaaad7b4ac6e1afabed19a80b2560.dir
       size: 0
       nfiles: 1
+  download_data@0:
+    cmd:
+    - curl "https://databank.worldbank.org/data/download/WDI_csv.zip" --create-dirs
+      -o "data/tmp/WDI_csv.zip"
+    - unzip data/tmp/WDI_csv.zip -d data/raw/wdi
+    outs:
+    - path: data/raw/wdi
+      md5: f42ca89f08d29f1c315a9abef6b3982c.dir
+      size: 280683852
+      nfiles: 6
+    - path: data/tmp/WDI_csv.zip
+      md5: f8c9976b6b6b26659b3a872d225cce4e
+      size: 67671555
+  download_data@1:
+    cmd:
+    - curl "https://databank.worldbank.org/data/download/Gender_Stats_csv.zip" --create-dirs
+      -o "data/tmp/Gender_Stats_csv.zip"
+    - unzip data/tmp/Gender_Stats_csv.zip -d data/raw/gender-stats
+    outs:
+    - path: data/raw/gender-stats
+      md5: 94de1196ddb9ab9f578fff168d6fdc45.dir
+      size: 150739029
+      nfiles: 6
+    - path: data/tmp/Gender_Stats_csv.zip
+      md5: 13b79aadd4dc5ffdd39aa6408a7dbf07
+      size: 24516085
+  download_data@2:
+    cmd:
+    - curl "https://databank.worldbank.org/data/download/IDS_CSV.zip" --create-dirs
+      -o "data/tmp/IDS_CSV.zip"
+    - unzip data/tmp/IDS_CSV.zip -d data/raw/ids
+    outs:
+    - path: data/raw/ids
+      md5: c80b5bbf5371159a9a0cf9c05c1a5691.dir
+      size: 33026808
+      nfiles: 6
+    - path: data/tmp/IDS_CSV.zip
+      md5: b9e24f73fff26c2b4582fc8434a2ec9c
+      size: 10465046

@@ -5,12 +5,13 @@ description = ""
 authors = ["Héctor Cuevas"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-dvc = "^2.10.0"
+python = "^3.10"
+dvc = "^2.15.0"
 hydra-core = "^1.1.1"
 pdoc3 = "^0.10.0"
 notebook = "^6.4.10"
 pre-commit = "^2.19.0"
+black = "^22.6.0"
 
 
 [tool.poetry.dev-dependencies]
