@@ -52,16 +52,11 @@ The final list including the one to be predicted (Fertility rate, total) will be
 | SP.POP.TOTL       | Population, total                                                                 | Word Development Indicators |
 | SE.SCH.LIFE.FE    | Expected years of schooling, female                                               | Gender Statistics           |
 
+Now we select the last year for which we have data , the 2021, and extract the features selected from the different dataframes. Then we merge all the dataframes in a single one so we can carry out the calculations.
 
+On this data frame we are going to fit a simple linear regression and see how good it fits the values we have.
 
-
-
-
-
-Selected indicators for analysis and source
-The IMF databases mentioned collect over 480 indicators from all countries and not all of them are relevant for
-this purpose. There was a preference for broad macroeconomic and social indicators which are easy to
-understand without much domain knowledge.
+Filtering and selecting by a single year we found that there is not information for the expexted years of stufy for females for all the countries. Analyzing the dataset we observe that the year 2019 has information for 138 countries. We could try to find other explanatory variables for teh level of education of the females in a country, but for this exercise we consider we have enough data to keep using this variable.. but on this case we will remove all countries for which there is no data for this variable of for any of the other variables to consider.
 
 ## Structure of project
 
